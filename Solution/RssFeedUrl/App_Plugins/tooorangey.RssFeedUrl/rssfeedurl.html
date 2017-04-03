@@ -1,0 +1,12 @@
+﻿<div class="umb-editor" ng-controller="tooorangey.RssFeedUrlController as vm">
+   <input type="text" ng-model="model.value" ng-change="vm.updateValue()" /><a class="btn " ng-class="{'btn-warning': !vm.status.linkTested,'btn-success': vm.status.linkValid,'btn-danger': vm.status.linkTested && !vm.status.linkValid}" ng-click="vm.checkFeedUrl()"><i ng-show="vm.status.isChecking" class="fa fa-circle-o-notch fa-spin"></i><i ng-show="vm.status.linkValid" class="fa fa-check"></i><i ng-show="vm.status.linkTested && !vm.status.linkValid" class="fa fa-close"></i> {{vm.status.buttonText}}</a> <a class="btn" ng-show="vm.status.linkValid" ng-click="vm.previewFeed()">Preview Feed</a>
+
+    <div class="alert alert-error" ng-show="vm.status.linkTested && !vm.status.linkValid"> <i class="fa fa-warning"></i> {{vm.status.statusMessage}}</div>
+    <umb-overlay ng-if="vm.overlay.show"
+                 model="vm.overlay"
+                 view="vm.overlay.view"
+                 title="vm.overlay.title"
+                 position="right">
+    </umb-overlay>
+
+</div>

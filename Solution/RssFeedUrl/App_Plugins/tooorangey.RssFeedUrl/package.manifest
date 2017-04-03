@@ -1,0 +1,14 @@
+﻿{
+    propertyEditors: [
+     {
+        alias: "tooorangey.RssFeedUrl",
+        name: "RssFeedUrl",
+        editor: {	                                        
+        view: "~/App_Plugins/tooorangey.RssFeedUrl/rssfeedurl.html"
+        }
+    }],
+   javascript: [
+   '~/App_Plugins/tooorangey.RssFeedUrl/rssfeedurl.controller.js',
+   ],
+    css: ['~/App_Plugins/tooorangey.RssFeedUrl/rssfeedurl.css']
+}
