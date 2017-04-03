@@ -22,7 +22,7 @@
     vm.previewFeed = previewFeed;
 
     function previewFeed() {
-        console.log(vm.overlay);
+        //console.log(vm.overlay);
         vm.overlay.show = true;
     }
     function updateValue() {
@@ -43,7 +43,7 @@
                 method: 'GET',
                 url: '/umbraco/backoffice/api/feed/GetRssFeed?feedUrl=' + $scope.model.value
             }).then(function successCallback(response) {
-                console.log(response.data);
+                //console.log(response.data);
                 var feedDetails = response.data;
                 vm.status.isChecking = false;
                 vm.status.linkTested = true;
@@ -70,7 +70,7 @@
                 vm.status.linkValid = false;
                 vm.status.isChecking = false;
                 vm.status.statusMessage = 'An error requesting and reading the feed url';
-                console.log(response);
+                //console.log(response);
             });
 
 
