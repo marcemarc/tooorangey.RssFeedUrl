@@ -17,7 +17,7 @@ var rssFeed =Model.Content.GetPropertyValue<FeedResult>("rssFeedUrl");
         <div class="row">
             @foreach (var feedItem in rssFeed.SyndicationFeed.Items)
             {
-                <div class="col-md-4"><h2>@feedItem.Title.Text</h2><h6 class="muted">@feedItem.PublishDate.ToTimeAgo()<br />@feedItem.PublishDate.ToString("hh:mmtt dddd, dd MMM yyyy")</h6><p>@feedItem.Summary.Text</p><a class="btn btn-primary" title="@feedItem.Title.Text" href="@feedItem.Links[0].Uri">Read more...</a></div>
+                <div class="col-md-4"><h2>@feedItem.Title.Text</h2><h6 class="muted">@feedItem.PublishDate.ToTimeAgo()<br />@feedItem.PublishDate.ToString("hh:mmtt dddd, dd MMM yyyy")</h6><div>@Html.Raw(feedItem.Summary.Text)</div><a class="btn btn-primary" title="@feedItem.Title.Text" href="@feedItem.Links[0].Uri">Read more...</a></div>
             }
         </div>
     </div>
