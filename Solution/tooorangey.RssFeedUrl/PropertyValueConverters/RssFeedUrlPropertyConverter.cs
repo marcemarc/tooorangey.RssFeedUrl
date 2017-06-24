@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using System.Text;
@@ -42,9 +43,17 @@ namespace tooorangey.RssFeedUrl.PropertyValueConverters
             {
                 try
                 {
-                    var reader = XmlReader.Create(feedUrl);
-                    feedContent = SyndicationFeed.Load(reader);
-                    reader.Close();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(feedUrl);
+                    request.UserAgent = "tooorangey.FeedReader";
+                    request.Headers.Add("Accept-Encoding", "gzip,deflate");
+                    request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                    using (WebResponse response = request.GetResponse())
+                    {
+                        using (System.Xml.XmlReader reader = XmlReader.Create(response.GetResponseStream()))
+                        {
+                            feedContent = System.ServiceModel.Syndication.SyndicationFeed.Load(reader);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
